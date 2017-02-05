@@ -14,20 +14,29 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="large-12 columns">
-        <h1>My Contacts</h1>
-        <hr>
-      </div>
+      <div ng-view></div>
     </div>
-    <div ng-view></div>
   </div>
 
   <script src="/bower_components/jquery/dist/jquery.min.js"></script>
   <script src="/bower_components/angular/angular.min.js"></script>
   <script src="/bower_components/angular-route/angular-route.min.js"></script>
   <script src="/bower_components/foundation/js/foundation.min.js"></script>
-  <script src="/bower_components/firebase/firebase.js" <script src="app.js"></script>
+  <script src="/bower_components/firebase/firebase.js"></script>
+  <script src="/bower_components/angularfire/dist/angularfire.min.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDqgIKftjbFve9TtcKQwFybgmRvz0wT0TI",
+      authDomain: "mycontactapp-3f838.firebaseapp.com",
+      databaseURL: "https://mycontactapp-3f838.firebaseio.com",
+      storageBucket: "mycontactapp-3f838.appspot.com",
+      messagingSenderId: "221315065982"
+    };
+    firebase.initializeApp(config);
+  </script>
   <script src="contacts/contacts.js"></script>
+  <script src="login/login.js"></script>
   <script src="app.js"></script>
 </body>
 

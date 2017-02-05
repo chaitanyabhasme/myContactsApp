@@ -1,0 +1,53 @@
+<div class="large-3 large-centered columns">
+  <div class="login-box">
+    <h3>Contacts App</h3>
+    <div class="row">
+      <div class="large-12 columns">
+        <form ng-submit="authUser()" ng-show="showLogin" data-abide>
+          <div class="row">
+            <div class="large-12 columns">
+              <input type="text" name="email" ng-model="email" placeholder="Email Address" required pattern="email" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <input type="password" name="password" ng-model="password" placeholder="Password" required/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 large-centered columns">
+              <input type="submit" class="button expand" value="Log In" />
+            </div>
+            <div class="large-12 large-centered columns">
+              <input type="button" class="button expand" ng-click="showLogin = !showLogin;showSignup = !showSignup" value="Sign Up" />
+            </div>
+          </div>
+        </form>
+        <form ng-submit="addUser()" ng-show="showSignup" data-abide>
+          <div class="row">
+            <div class="large-12 columns">
+              <input type="text" ng-model="signupEmail" placeholder="Enter Email Address" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2-5})$" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <input type="password" id="signupPassword" ng-model="signupPassword" placeholder="Enter Password" required pattern="[a-zA-Z0-9]+" />
+              <small class="error">Your password must match the requirements</small>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <input type="password" ng-model="signupPassword2" placeholder="Re-enter Password" required data-equalto="signupPassword" />
+              <small class="error">Passwords do not match.</small>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 large-centered columns">
+              <input type="submit" class="button expand" value="Sign Up" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
