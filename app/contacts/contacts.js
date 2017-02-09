@@ -13,8 +13,23 @@ angular.module('myContacts.contacts', ['ngRoute', 'firebase'])
     // get contacts
     $scope.contacts = $firebaseArray(firebaseRef);
 
+    // clear the form fields
+    $scope.clearFields = function () {
+      $scope.name = "";
+      $scope.email = "";
+      $scope.company = "";
+      $scope.mobile_phone = "";
+      $scope.home_phone= "";
+      $scope.work_phone= "";
+      $scope.state_address= "";
+      $scope.city = "";
+      $scope.state = "";
+      $scope.zipcode = "";
+    };
+
     // show add form
     $scope.showAddForm = function () {
+      $scope.clearFields();
       $scope.addFormShow = true;
     };
 
@@ -25,8 +40,6 @@ angular.module('myContacts.contacts', ['ngRoute', 'firebase'])
 
     // add contact
     $scope.addFormSubmit = function () {
-      console.log('Adding contact..');
-
       // assign the form values
       if ($scope.name) {
         var name = $scope.name;
@@ -112,17 +125,27 @@ angular.module('myContacts.contacts', ['ngRoute', 'firebase'])
         $scope.msg = 'Contact Added';
       });
 
-      $scope.clearFields = function () {
-        $scope.name = "";
-        $scope.email = "";
-        $scope.company = "";
-        $scope.mobile_phone = "";
-        $scope.home_phone= "";
-        $scope.work_phone= "";
-        $scope.state_address= "";
-        $scope.city = "";
-        $scope.state = "";
-        $scope.zipcode = "";
-      }
+      $scope.showContact = function(contact){
+        $scope.name = contact.name;
+        $scope.email = contact.email;
+        $scope.company = contact.company;
+        $scope.work_phone = contact.phones[0].work;
+        $scope.home_phone = contact.phones[0].home;
+        $scope.mobile_phone = contact.phones[0].mobile;
+        $scope.street_address = contact.address[0].street_address;
+        $scope.city = contact.address[0].city;
+        $scope.state = contact.address[0].state;
+        $scope.zipcode = contact.address[0].zip_code;
+
+        console.log("Show Contact..");
+      };
+
+      $scope.showEditForm = function(contact){
+
+      };
+
+      $scope.removeContact = function(contact){
+
+      };
     }
 }]);
