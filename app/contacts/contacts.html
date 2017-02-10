@@ -4,22 +4,7 @@
 </div>
 <div class="large-10 columns">
 
-  <div ng-show="msg" class="alert-box" data-alert>{{msg}}</div>
-  <!--Show Contact-->
-  <div id="showContactModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-      <h3>{{name}}</h3>
-      <ul>
-        <li><strong>Company</strong>: {{company}}</li>
-        <li><strong>Email Address</strong>: {{email}}</li>
-        <h5>Phone Numbers</h5>
-        <li><strong>Work</strong>: {{work_phone}}</li>
-        <li><strong>Home</strong>: {{home_phone}}</li>
-        <li><strong>MObile</strong>: {{mobile_phone}}</li>
-        <h5>Location Info</h5>
-        <li>{{street_address}}</li>
-        <li>{{city}}, {{state}} {{zipcode}}</li>
-      </ul>
-  </div>
+  <div ng-show="msg" class="alert-box" data-alert>{{msg}}</div><!--Show Contact-->
   <form ng-submit="addFormSubmit()" ng-show="addFormShow">
     <h3>Add Contact</h3>
     <!-- Add Form -->
@@ -101,7 +86,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="contact in contacts">
-        <td><a ng-click="showContact(contact)" data-reveal-id="showContactModal">{{contact.name}}</a></td>
+        <td><a ng-href="#!/showContact/{{contact.$id}}">{{contact.name}}</a></td>
         <td>{{contact.company}}</td>
         <td>{{contact.email}}</td>
         <td>
@@ -112,7 +97,7 @@
     </tbody>
   </table>
 </div>
-<div class="small-12 large-2 columns">
+<div class="large-2 columns">
   <a class="button large" ng-click="showAddForm()" ng-hide="addFormShow">+</a>
   <a class="button large" ng-click="hide()" ng-show="addFormShow">-</a>
 </div>

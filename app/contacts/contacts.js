@@ -114,7 +114,6 @@ angular.module('myContacts.contacts', ['ngRoute', 'firebase'])
           }
         ]
       }).then(function (ref) {
-
         // clear the form
         $scope.clearFields();
 
@@ -125,27 +124,13 @@ angular.module('myContacts.contacts', ['ngRoute', 'firebase'])
         $scope.msg = 'Contact Added';
       });
 
-      $scope.showContact = function(contact){
-        $scope.name = contact.name;
-        $scope.email = contact.email;
-        $scope.company = contact.company;
-        $scope.work_phone = contact.phones[0].work;
-        $scope.home_phone = contact.phones[0].home;
-        $scope.mobile_phone = contact.phones[0].mobile;
-        $scope.street_address = contact.address[0].street_address;
-        $scope.city = contact.address[0].city;
-        $scope.state = contact.address[0].state;
-        $scope.zipcode = contact.address[0].zip_code;
+    };
 
-        console.log("Show Contact..");
-      };
+    $scope.showEditForm = function(contact){
+      console.log("Show Edit form!");
+    };
 
-      $scope.showEditForm = function(contact){
+    $scope.removeContact = function(contact){
 
-      };
-
-      $scope.removeContact = function(contact){
-
-      };
-    }
+    };
 }]);
