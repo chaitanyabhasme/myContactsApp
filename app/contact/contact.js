@@ -5,6 +5,8 @@ angular.module('myContactsApp.contact', ['ngRoute', 'firebase'])
     controller: 'ContactCtrl'
   });
 }])
-.controller('ContactCtrl', ['$scope','$log','$routeParams', function ($scope, $log, $routeParams) {
-  $log.info("id = " + $routeParams.id);
+.controller('ContactCtrl', ['$scope','$log','$routeParams','$firebaseObject', function ($scope, $log, $routeParams, $firebaseObject) {
+  var firebaseRef = firebase.database().ref($routeParams.id);
+  var obj = $firebaseObject(firebaseRef);
+  $scope.contact = obj;
 }]);

@@ -2,6 +2,31 @@
   <h2>View Contact</h2>
   <hr>
 </div>
-<div class="large-10 columns left">
-  <div><a class="button radius" ng-href="#!/contacts">All Contacts</a></div>
+<div class="large-12 columns left">
+  <div><a class="button radius info" ng-href="#!/contacts">All Contacts</a></div>
+  <div>
+    <div class="row">
+      <div class="large-10 columns">
+        <span class="label">Name</span><h2>{{contact.name}}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-6 columns">
+        <span class="label">Email</span><h3>{{contact.email}}</h3>
+      </div>
+      <div class="large-6 columns">
+        <span class="label">Company</span><h3>{{contact.company}}</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-10 columns">
+        <span class="label">Contact</span><h3>{{contact.phones[0].work}}(W) | {{contact.phones[0].mobile}}(M) | {{contact.phones[0].home}}(H)</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <span class="label">Address</span><h3>{{contact.address[0].street_address}}, {{contact.address[0].city}}, {{contact.address[0].state}} - {{contact.address[0].zip_code}}</h3>
+      </div>
+    </div>
+  </div>
 </div>
