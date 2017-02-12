@@ -6,7 +6,7 @@ angular.module('myContacts.contacts', ['ngRoute', 'firebase'])
     });
 }])
   // Contacts controller
-  .controller('ContactsCtrl', ['$scope', '$firebaseArray', function ($scope, $firebaseArray) {
+  .controller('ContactsCtrl', ['$scope', '$firebaseArray','$firebaseObject', function ($scope, $firebaseArray, $firebaseObject) {
 
     //init firebase
     var firebaseRef = firebase.database().ref();
@@ -126,11 +126,14 @@ angular.module('myContacts.contacts', ['ngRoute', 'firebase'])
 
     };
 
-    $scope.showEditForm = function(contact){
-      console.log("Show Edit form!");
-    };
-
     $scope.removeContact = function(contact){
-
+      var ref = firebase.database().ref(contact.$id);
+      var obj = $firebaseObject(ref);
+      obj.$remove().then(function(ref) {
+        console.log('Contact deleted from db');
+        console.log(ref);
+      }, function(error) {
+        console.log("Error:", error);
+      });
     };
 }]);
