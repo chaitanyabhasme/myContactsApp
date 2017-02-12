@@ -1,11 +1,13 @@
 <div class="large-5 large-centered columns">
   <div class="login-box">
-    <div class="row large-12 columns">
-      <h3 class="text-center">Contacts App</h3>
+    <div class="row">
+      <div class="large-12 columns large-centered text-center">
+        <h2>Contacts App</h2>
+      </div>
     </div>
     <div class="row">
       <div class="large-12 columns">
-        <form ng-submit="authUser()" ng-show="showLogin" data-abide>
+        <form ng-submit="authUser()" ng-show="showLogin" novalidate>
           <div class="row">
             <div class="large-12 columns">
               <input type="email" name="email" ng-model="email" placeholder="Email Address" required />
@@ -25,25 +27,30 @@
             </div>
           </div>
         </form>
-        <form ng-submit="addUser()" ng-show="showSignup" data-abide>
+        <form ng-submit="addUser()" ng-show="showSignup" novalidate>
           <div class="row">
             <div class="large-12 columns">
-                <input type="email" ng-model="signupEmail" aria-describedby="emailHelpText" placeholder="Enter Email Address" required />
+              <input type="email" ng-model="signupEmail" placeholder="Enter Email Address" required />
             </div>
           </div>
           <div class="row">
             <div class="large-12 columns">
-              <input type="password" id="signupPassword" ng-model="signupPassword" placeholder="Enter Password" required pattern="[a-zA-Z0-9]+" />
+              <input type="password" ng-model="signupPassword" placeholder="Enter Password" required pattern="[a-zA-Z0-9]+" />
             </div>
           </div>
           <div class="row">
             <div class="large-12 columns">
-              <input type="password" ng-model="signupPassword2" placeholder="Re-enter Password" required data-equalto="signupPassword" />
+              <input type="password" ng-model="signupPassword2" placeholder="Re-enter Password" required/>
             </div>
           </div>
           <div class="row">
             <div class="large-12 large-centered columns text-center">
-              <input type="submit" class="button expand" value="Sign Up" />
+              <input type="submit" class="button" value="Sign Up" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 large-centered columns text-center">
+              <input type="button" class="button" ng-click="showLogin = !showLogin;showSignup = !showSignup" value="Login" />
             </div>
           </div>
         </form>

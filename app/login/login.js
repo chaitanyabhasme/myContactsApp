@@ -5,24 +5,30 @@ angular.module('myContacts.login', ['ngRoute', 'firebase'])
       controller: 'LoginCtrl'
     })
 }])
-  .controller('LoginCtrl', ['$scope', '$firebaseAuth', '$log', function ($scope, $firebaseAuth, $log) {
-    var auth = $firebaseAuth();
+  .controller('LoginCtrl', ['$scope', '$firebaseAuth', '$log', '$location', function ($scope, $firebaseAuth, $log, $location) {
+    $scope.authObj = $firebaseAuth(firebase.auth());
 
     $scope.showLogin = true;
     $scope.showSignup = false;
-    $scope.createUser = function () {
-      $scope.message = null;
-      $scope.error = null
-
-      $log.info($scope.email + ":" + $scope.password);
-    }
 
     $scope.authUser = function () {
-
-    }
+      $scope.authObj.$signInWithEmailAndPassword($scope.email, $scope.password).then(function(firebaseUser) {
+        $location.path('/contacts');
+      }).catch(function(error) {
+        console.error("Authentication failed:", error);
+      });
+    };
 
     $scope.addUser = function () {
-      $log.info($scope.signupEmail + ":" + $scope.signupPassword + ":" + $scope.signupPassword2)
-    }
+      $log.info($scope.signupEmail + ":" + $scope.signupPassword + ":" + $scope.signupPassword2);
+      $scope.authObj.$createUserWithEmailAndPassword($scope.signupEmail, $scope.signupPassword)
+        .then(function(firebaseUser) {
+          $scope.showLogin = true;
+          $scope.showSignup = false;
+        }).catch(function(error) {
+        console.error("Error: ", error);
+      });
+
+    };
 
 }]);
